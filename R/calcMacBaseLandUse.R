@@ -17,7 +17,7 @@ calcMacBaseLandUse <- function(subtype) {
 
   # Create empty magclass object with all dimensions that can be filled below (so it's easy to see which entries remain empty afterwards)
   iso_country <- read.csv2(system.file("extdata", "iso_country.csv", package = "madrat"), row.names = NULL)
-  source      <- c("co2luc", "n2oanwstm", "n2ofertin", "n2oanwstc", "n2ofertcr", "n2ofertsom", "n2ofertrb", "n2oanwstp", "n2oforest", "n2osavan", "n2oagwaste", "ch4rice", "ch4anmlwst", "ch4animals", "ch4forest", "ch4savan", "ch4agwaste")
+  source      <- c("co2luc", "n2oanwstm", "n2ofertin", "n2oanwstc", "n2ofertcr", "n2ofertsom", "n2ofertrb", "n2oanwstp", "n2oforest", "n2osavan", "n2oagwaste", "n2opeatland", "ch4rice", "ch4anmlwst", "ch4animals", "ch4forest", "ch4savan", "ch4agwaste", "ch4peatland")
 
   y <- new.magpie(cells_and_regions = iso_country$x, years = seq(2005, 2150, 5), names = source, sets = c("region", "year", "type"))
   y <- add_dimension(y, dim = 3.2, add = "c_LU_emi_scen", nm = c("SSP1", "SSP2", "SSP5", "SDP"))
@@ -123,9 +123,11 @@ calcMacBaseLandUse <- function(subtype) {
                  "n2ofertcr",
                  "n2ofertsom",
                  "n2oanwstp",
+                 "n2opeatland",
                  "ch4rice",
                  "ch4anmlwst",
-                 "ch4animals")
+                 "ch4animals",
+                 "ch4peatland")
 
     y <- y[, , emi_mag]
 
